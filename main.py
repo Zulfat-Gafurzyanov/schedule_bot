@@ -6,7 +6,7 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
 from config.config import load_config
-from handlers.user import user_router
+from handlers.private import private_router
 from keyboards.set_menu import (
     set_main_menu_for_private,
     set_main_menu_for_group
@@ -32,7 +32,7 @@ async def main():
     await set_main_menu_for_private(bot)
     await set_main_menu_for_group(bot)
 
-    dp.include_router(user_router)
+    dp.include_router(private_router)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
